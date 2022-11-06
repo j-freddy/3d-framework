@@ -3,7 +3,19 @@ const ctx = <CanvasRenderingContext2D> canvas.getContext("2d");
 
 function main() {
   console.log("Hello world!");
-  ctx.fillRect(32, 256, 64, 64);
+
+  const M = new Matrix([
+    [1, 2, 3],
+    [4, 5, 6]
+  ]);
+
+  const N = new Matrix([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ]);
+
+  console.log(Matrix.mult(M, N.T).toString());
 }
 
 window.addEventListener("load", main);
