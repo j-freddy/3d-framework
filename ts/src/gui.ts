@@ -1,4 +1,8 @@
 class GUI {
+  static clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
   // @M is transformation matrix
   static draw(points: Point[], segments: Segment[]) {
     ctx.save();
