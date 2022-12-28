@@ -71,6 +71,22 @@ class Matrix {
     return new Matrix(data);
   }
 
+  // @matrix - @other
+  static subtract(matrix: Matrix, other: Matrix): Matrix {
+    // TODO Check dimension
+    const data: number[][] = Array(matrix.numRows);
+
+    for (let i = 0; i < matrix.numRows; i++) {
+      data[i] = Array(matrix.numCols);
+      
+      for (let j = 0; j < matrix.numCols; j++) {
+        data[i][j] = matrix.get(i, j) - other.get(i, j);
+      }
+    }
+
+    return new Matrix(data);
+  }
+
   // @matrix * @other
   static mult(matrix: Matrix, other: Matrix): Matrix {
     if (matrix.numCols !== other.numRows) {
@@ -112,5 +128,33 @@ class Matrix {
     }
 
     return new Matrix(data);
+  }
+
+  // ===========================================================================
+  // 3D rotation matrices
+  // ===========================================================================
+
+  static xRotation(rad: number): Matrix {
+    return new Matrix([
+      [1, 0, 0],
+      [0, Math.cos(rad), -Math.sin(rad)],
+      [0, Math.sin(rad), Math.cos(rad)],
+    ]);
+  }
+
+  static yRotation(rad: number): Matrix {
+    return new Matrix([
+      [Math.cos(rad), 0, Math.sin(rad)],
+      [0, 1, 0],
+      [-Math.sin(rad), 0, Math.cos(rad)],
+    ]);
+  }
+
+  static zRotation(rad: number): Matrix {
+    return new Matrix([
+      [Math.cos(rad), -Math.sin(rad), 0],
+      [Math.sin(rad), Math.cos(rad), 0],
+      [0, 0, 1],
+    ]);
   }
 }

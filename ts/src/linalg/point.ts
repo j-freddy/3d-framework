@@ -26,4 +26,8 @@ class Point extends Vector {
     // TODO Assert shape of M
     return new Point(M.T.data[0]);
   }
+
+  static zero(): Point {
+    return new Point([0, 0, 0]);
+  }
 }
